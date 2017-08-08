@@ -1,0 +1,135 @@
+#: import ew kivy.uix.effectwidget
+<MenuScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+
+        Button:
+            text: "Start training"
+            size_hint: (1, .3)
+            background_color: 0.45, 0.75, 0.45, 1
+            on_release: app.start_training()
+
+        Button:
+            text: "Scores"
+            size_hint: (1, .175)
+            on_release: root.manager.current = "scores"
+
+        Button:
+            text: "Settings"
+            size_hint: (1, .175)
+            on_release: root.manager.current = "settings"
+
+        Button:
+            text: "About"
+            size_hint: (1, .175)
+            on_release: root.manager.current = "about"
+
+        Button:
+            text: "Quit"
+            size_hint: (1, .175)
+            background_color: 0.7, 0.45, 0.45, 1
+            on_release: app.stop()
+
+<SettingsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+
+        Label:
+            id: size_label
+            size_hint: (1, .3)
+            text_size: self.size
+            text: "Size of table: %d" % size_slider.value
+            valign: "bottom"
+            halign: "center"
+
+        Slider:
+            id: size_slider
+            size_hint: (1, .6)
+            min: 3
+            max: 9
+            value: app._size
+            step: 1
+
+            on_touch_move: app._size = size_slider.value
+
+        Button:
+            size_hint: (1, .1)
+            text: "Back to menu"
+            on_release: root.manager.current = "menu"
+
+<TableLayout>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<ScoresScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+
+        CalendarWidget:
+            id: calendar
+            touch_switch: True
+            as_popup: True
+            size_hint: (1, .85)
+
+        Button:
+            size_hint: (1, .1)
+            text: "Back to menu"
+            on_release: root.manager.current = "menu"
+
+<AboutScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+
+        Label:
+            text: root.tutorial_text
+            size_hint: (1, .05)
+            text_size: self.size
+            valign: "top"
+            halign: "center"
+            markup: True
+            on_ref_press: root.change_tutorial()
+
+        Label:
+            text: "PySchulte App was created by r4rdsn for Kirya in 2017.\nThis program is free software and is distributed under the terms of [ref=license][b]the terms of the GNU GPL v3[/b][/ref]."
+            size_hint: (1, .15)
+            text_size: self.size
+            halign: "center"
+            markup: True
+            on_ref_press: root.show_license()
+
+        EffectWidget:
+            id: effect
+            effects: [ew.InvertEffect()]
+            inverted: True
+            size_hint: (1, .5)
+
+            ImageButton:
+                source: "logo.png"
+                on_press:
+                    if not effect.inverted: effect.effects = [ew.InvertEffect()]; effect.inverted = True
+                    else: effect.effects = []; effect.inverted = False
+
+        Label:
+            text: "Github: [ref=github][b]https://github.com/r4rdsn[/b][/ref]\nTelegram: [ref=telegram][b]https://t.me/r4rdsn[/b][/ref]"
+            size_hint: (1, .2)
+            text_size: self.size
+            valign: "top"
+            halign: "center"
+            markup: True
+            on_ref_press:
+                import webbrowser
+                if args[1] == "github": webbrowser.open("https://github.com/r4rdsn")
+                elif args[1] == "telegram": webbrowser.open("https://t.me/r4rdsn")
+
+        Button:
+            size_hint: (1, .1)
+            text: "Back to menu"
+            on_release: root.manager.current = "menu"
