@@ -1,4 +1,4 @@
-'''
+LICENSE = '''
 Copyright (C) 2017  alfred richardsn
 
 This program is free software: you can redistribute it and/or modify
@@ -15,8 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+import sys
 import random
-from tinydb import Query
+import os.path
 
 from kivy.app import App
 from kivy.clock import Clock
@@ -31,14 +32,20 @@ from kivy.properties import StringProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
-from database import db
-from KivyCalendar import calendar_data
-from KivyCalendar.calendar_ui import CalendarWidget
+from tinydb import TinyDB
+from tinydb import Query
 
+from KivyCalendar import calendar_data
+
+
+db = TinyDB("db.json")
 
 Config.set("kivy", "exit_on_escape", 0)
 Config.set("kivy", "pause_on_minimize", 1)
-Config.set("graphics", "minimal_width", 600)
+Config.set("graphics", "width", 450)
+Config.set("graphics", "minimum_width", 400)
+Config.set("graphics", "height", 590)
+Config.set("graphics", "minimum_height", 540)
 Config.set("input", "mouse", "mouse, multitouch_on_demand")
 
 
@@ -69,24 +76,10 @@ class ImageButton(ButtonBehavior, Image):
 class LicensePopup(Popup):
     def __init__(self, *args, **kwargs):
         super(LicensePopup, self).__init__(*args, **kwargs)
-        self.text = '''\
-Copyright (C) 2017  alfred richardsn
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.'''
+        self.text = LICENSE
 
         layout = BoxLayout(orientation="vertical")
-        layout.add_widget(Label(text=self.text, font_size='13sp', size_hint=(1, .9)))
+        layout.add_widget(Label(text=self.text, font_size='13sp'))
         layout.add_widget(Button(text="Close", on_release=self.dismiss, size_hint=(1, .1)))
         self.add_widget(layout)
 
@@ -116,6 +109,7 @@ class TableLayout(GridLayout):
 
 class SchulteApp(App):
     def build(self):
+        self.title = 'PySchulte App'
         self.sm = ScreenManager(transition=NoTransition())
 
         menu_screen = MenuScreen(name="menu")
@@ -196,5 +190,8 @@ class SchulteApp(App):
         self.goto_main_menu()
 
 
-if __name__ == "__main__":
-    SchulteApp().run()
+def main():
+    try:
+        SchulteApp().run()
+    except KeyboardInterrupt:
+        sys.exit(0)

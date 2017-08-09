@@ -1,0 +1,7 @@
+exclude .gitignore
+prune .cache
+prune .git
+prune build
+prune dist
+recursive-exclude *.egg-info *
+recursive-exclude KivyCalendar *

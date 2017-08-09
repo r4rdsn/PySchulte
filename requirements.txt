@@ -1,3 +1,0 @@
-Kivy==1.10.0
-tinydb==3.3.1
-KivyCalendar==0.1.3
