@@ -1,10 +1,22 @@
 # About
 A Schulte table is a grid with randomly distributed numbers or letters used for development of speed reading, peripheral vision, attention and visual perception. You can find more information on [wikipedia](https://en.wikipedia.org/wiki/Schulte_table).  
-This program was developed on Python using Kivy GUI framework.
+PySchulte has such features as:  
+* Timer that is tracking seconds of one training
+* Time results are saved in a calendar sorted
+* Limit on 10 trainings in one day
+* Resizable table with side options from 3 to 9
+* Resizable window to get the most comfortable size of table
+
+The first version of PySchulte was developed as a request fulfillment for my friend's personal use back in March '17. So with his permission I decided to make it Open Source in case anyone would be interested in this.  
+This program was developed on [Python](https://python.org/) using [Kivy GUI framework](https://github.com/kivy/kivy), [tinydb package](https://github.com/msiemens/tinydb) and my [fork of KivyCalendar](https://bitbucket.org/r4rdsn/kivycalendar/src/5009ae3862ef55022b1d48910ef0899828d4f62a/), as the original branch didn't work on Python 3.
 
 
-# History
-The first version of PySchulte was developed as a request fulfillment for my friend's personal use back in March '17. So with his permission I decided to make it Open Source in case anyone would be interested in this.
+# Installation
+```$ git clone https://github.com/r4rdsn/PySchulte/```  
+```$ cd PySchulte```   
+```$ sudo python setup.py install```  
+```$ sudo pip install .```  
+After installation you should be able to run PySchulte in terminal by using ```pyschulte``` command. 
 
 
 # OS support

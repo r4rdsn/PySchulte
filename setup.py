@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages, Command
+from setuptools import setup, find_packages
 
 from PySchulte import __version__
 from os.path import abspath, dirname, join

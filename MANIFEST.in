@@ -1,3 +1,5 @@
+include PySchulte/logo.png
+include PySchulte/schulte.kv
 exclude .gitignore
 prune .cache
 prune .git
