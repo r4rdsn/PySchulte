@@ -8,7 +8,7 @@ PySchulte has such features as:
 * Resizable window to get the most comfortable size of table
 
 The first version of PySchulte was developed as a request fulfillment for my friend's personal use back in March '17. So with his permission I decided to make it Open Source in case anyone would be interested in this.  
-This program was developed on [Python](https://python.org/) using [Kivy GUI framework](https://github.com/kivy/kivy), [tinydb package](https://github.com/msiemens/tinydb) and my [fork of KivyCalendar](https://bitbucket.org/r4rdsn/kivycalendar/src/5009ae3862ef55022b1d48910ef0899828d4f62a/), as the original branch didn't work on Python 3.
+This program was developed on [Python](https://python.org/) using [Kivy GUI framework](https://github.com/kivy/kivy), [tinydb](https://github.com/msiemens/tinydb) and [KivyCalendar](https://bitbucket.org/xxblx/kivycalendar/).
 
 
 # Installation
