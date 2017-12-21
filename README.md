@@ -20,7 +20,7 @@ After installation you should be able to run PySchulte in terminal by using ```p
 
 
 # OS support
-PySchulte primarily supports GNU/Linux and is tested on Arch Linux and Antegros. The first version was tested on Windows as a binary compiled using PyInstaller, however it might be not relevant on further updates.
+PySchulte primarily supports GNU/Linux and is tested on Arch Linux and Antergos. The first version was tested on Windows as a binary compiled using PyInstaller, however it might be not relevant on further updates.
 
 
 # License
